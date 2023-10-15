@@ -8,6 +8,7 @@ import type { AppLoadContext, EntryContext } from "@remix-run/cloudflare";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+import { etag } from 'remix-etag'
 
 export default async function handleRequest(
   request: Request,
@@ -33,8 +34,9 @@ export default async function handleRequest(
   }
 
   responseHeaders.set("Content-Type", "text/html");
-  return new Response(body, {
+  const response = new Response(body, {
     headers: responseHeaders,
     status: responseStatusCode,
   });
+  return etag({ request, response })
 }
