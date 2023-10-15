@@ -1,0 +1,26 @@
+diff --git a/node_modules/@remix-run/cloudflare-pages/dist/esm/worker.js b/node_modules/@remix-run/cloudflare-pages/dist/esm/worker.js
+index a30035a..49e7f30 100644
+--- a/node_modules/@remix-run/cloudflare-pages/dist/esm/worker.js
++++ b/node_modules/@remix-run/cloudflare-pages/dist/esm/worker.js
+@@ -43,7 +43,7 @@ function createPagesFunctionHandler({
+     let response;
+ 
+     // https://github.com/cloudflare/wrangler2/issues/117
+-    context.request.headers.delete("if-none-match");
++    // context.request.headers.delete("if-none-match");
+     try {
+       response = await context.env.ASSETS.fetch(context.request.url, context.request.clone());
+       response = response && response.status >= 200 && response.status < 400 ? new Response(response.body, response) : undefined;
+diff --git a/node_modules/@remix-run/cloudflare-pages/dist/worker.js b/node_modules/@remix-run/cloudflare-pages/dist/worker.js
+index 04572b2..ac08cd0 100644
+--- a/node_modules/@remix-run/cloudflare-pages/dist/worker.js
++++ b/node_modules/@remix-run/cloudflare-pages/dist/worker.js
+@@ -47,7 +47,7 @@ function createPagesFunctionHandler({
+     let response;
+ 
+     // https://github.com/cloudflare/wrangler2/issues/117
+-    context.request.headers.delete("if-none-match");
++    // context.request.headers.delete("if-none-match");
+     try {
+       response = await context.env.ASSETS.fetch(context.request.url, context.request.clone());
+       response = response && response.status >= 200 && response.status < 400 ? new Response(response.body, response) : undefined;
